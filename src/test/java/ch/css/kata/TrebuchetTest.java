@@ -6,6 +6,8 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -45,7 +47,7 @@ class TrebuchetTest {
         String input = "src/test/resources/testInput.txt";
         List<String> expected = Arrays.asList("6798seven", "se7en");
 
-        List<String> actual = testee.getStringFromFile(input);
+        List<String> actual = Files.readAllLines(Path.of(input));
 
         assertEquals(expected, actual);
     }
