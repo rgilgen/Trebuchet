@@ -1,5 +1,6 @@
 package ch.css.kata;
 
+import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -11,8 +12,8 @@ public class Trebuchet {
         String numbers = pattern
                 .matcher(input)
                 .results()
-                .map(match -> match.group())
+                .map(MatchResult::group)
                 .collect(Collectors.joining(""));
-        return Integer.valueOf(numbers);
+        return Integer.parseInt(numbers);
     }
 }
