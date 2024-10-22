@@ -1,6 +1,6 @@
 package ch.css.kata;
 
-import java.io.*;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -9,7 +9,11 @@ public class Trebuchet {
 
     public int getCalibrationValuesFromFromFile(String input) throws IOException {
         List<String> listOfStrings = Files.readAllLines(Path.of(input));
-        return listOfStrings.stream().map(this::getCalibrationValue).reduce(Integer::sum).orElseThrow();
+        return listOfStrings
+                .stream()
+                .map(this::getCalibrationValue)
+                .reduce(Integer::sum)
+                .orElseThrow();
     }
 
     int getCalibrationValue(String input) {
