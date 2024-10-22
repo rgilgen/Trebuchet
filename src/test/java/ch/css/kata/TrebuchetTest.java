@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TrebuchetTest {
 
@@ -43,6 +44,13 @@ class TrebuchetTest {
     }
 
     @Test
+    void getCalibrationValueException() {
+        String input = "abc";
+
+        assertThrows(IllegalArgumentException.class, () -> testee.getCalibrationValue(input));
+    }
+
+    @Test
     void getCalibrationValueForOneNumber() {
         String input = "ab7c";
         int expected = 77;
@@ -71,6 +79,7 @@ class TrebuchetTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     void getCalibrationValuesFromFromRealFile() throws IOException {
         String input = "src/main/resources/input.txt";

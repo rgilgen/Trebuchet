@@ -3,10 +3,6 @@ package ch.css.kata;
 import java.io.*;
 import java.nio.file.Files;
 import java.util.List;
-import java.util.regex.MatchResult;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class Trebuchet {
 
@@ -25,17 +21,18 @@ public class Trebuchet {
     }
 
     int getCalibrationValue(String input) {
-        Pattern pattern = Pattern.compile("(\\d).*(\\d)");
-        Matcher matcher = pattern.matcher(input);
+        String numbers = input.replaceAll("\\D", "");
 
+        if (numbers.isBlank()) {
+            throw new IllegalArgumentException("No numbers found");
+        }
         String firstAndLastDigit;
-        if (matcher.find()) {
-            firstAndLastDigit = matcher.group(1) + matcher.group(2);
+        int length = numbers.length();
+        String firstNumber = String.valueOf(Character.getNumericValue(numbers.charAt(0)));
+        if (length > 1) {
+            firstAndLastDigit = firstNumber + Character.getNumericValue(numbers.charAt(length - 1));
         } else {
-            String digit = Pattern.compile("\\d").matcher(input).results()
-                    .map(MatchResult::group)
-                    .collect(Collectors.joining());
-            firstAndLastDigit = digit + digit;
+            firstAndLastDigit = firstNumber + numbers.charAt(0);
         }
         return Integer.parseInt(firstAndLastDigit);
     }
