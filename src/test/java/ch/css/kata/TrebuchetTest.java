@@ -1,10 +1,14 @@
 package ch.css.kata;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -13,34 +17,20 @@ class TrebuchetTest {
 
     private final Trebuchet testee = new Trebuchet();
 
-    @Test
-    void getCalibrationValue() {
-        String input = "1abc2";
-        int expected = 12;
-
+    @ParameterizedTest
+    @MethodSource("calibrationValueProvider")
+    void getCalibrationValue(String input, int expected) {
         int actual = testee.getCalibrationValue(input);
-
         assertEquals(expected, actual);
     }
 
-    @Test
-    void getCalibrationValueFromThreeNumbers68() {
-        String input = "6798seven";
-        int expected = 68;
-
-        int actual = testee.getCalibrationValue(input);
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void getCalibrationValueFromThreeNumbers12() {
-        String input = "1ab4c2";
-        int expected = 12;
-
-        int actual = testee.getCalibrationValue(input);
-
-        assertEquals(expected, actual);
+    private static Stream<Arguments> calibrationValueProvider() {
+        return Stream.of(
+                Arguments.of("1abc2", 12),
+                Arguments.of("6798seven", 68),
+                Arguments.of("1ab4c2", 12),
+                Arguments.of("ab7c", 77)
+        );
     }
 
     @Test
@@ -50,15 +40,6 @@ class TrebuchetTest {
         assertThrows(IllegalArgumentException.class, () -> testee.getCalibrationValue(input));
     }
 
-    @Test
-    void getCalibrationValueForOneNumber() {
-        String input = "ab7c";
-        int expected = 77;
-
-        int actual = testee.getCalibrationValue(input);
-
-        assertEquals(expected, actual);
-    }
 
     @Test
     void getStringFromFile() throws IOException {
