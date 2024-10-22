@@ -22,12 +22,12 @@ public class Trebuchet {
 
     int getCalibrationValue(String input) {
         String numbers = input.replaceAll("\\D", "");
+        String firstAndLastDigit;
+        int length = numbers.length();
 
         if (numbers.isBlank()) {
             throw new IllegalArgumentException("No numbers found");
         }
-        String firstAndLastDigit;
-        int length = numbers.length();
         String firstNumber = String.valueOf(Character.getNumericValue(numbers.charAt(0)));
         if (length > 1) {
             firstAndLastDigit = firstNumber + Character.getNumericValue(numbers.charAt(length - 1));

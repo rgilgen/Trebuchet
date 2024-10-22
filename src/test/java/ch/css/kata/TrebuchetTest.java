@@ -40,7 +40,6 @@ class TrebuchetTest {
         assertThrows(IllegalArgumentException.class, () -> testee.getCalibrationValue(input));
     }
 
-
     @Test
     void getStringFromFile() throws IOException {
         String input = "src/test/resources/testInput.txt";
