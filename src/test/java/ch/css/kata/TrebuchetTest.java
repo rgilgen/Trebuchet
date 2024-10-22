@@ -23,7 +23,17 @@ class TrebuchetTest {
     }
 
     @Test
-    void getCalibrationValueFromThreeNumbers() {
+    void getCalibrationValueFromThreeNumbers68() {
+        String input = "6798seven";
+        int expected = 68;
+
+        int actual = testee.getCalibrationValue(input);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void getCalibrationValueFromThreeNumbers12() {
         String input = "1ab4c2";
         int expected = 12;
 
@@ -52,5 +62,14 @@ class TrebuchetTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void getCalibrationValuesFromFromFile() throws IOException {
+        String input = "src/test/resources/testInput.txt";
+        int expected = 68 + 77;
+
+        int actual = testee.getCalibrationValuesFromFromFile(input);
+
+        assertEquals(expected, actual);
+    }
 
 }
