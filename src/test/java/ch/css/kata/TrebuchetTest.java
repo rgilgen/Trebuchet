@@ -71,5 +71,14 @@ class TrebuchetTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    void getCalibrationValuesFromFromRealFile() throws IOException {
+        String input = "src/main/resources/input.txt";
+        int expected = 54239;
+
+        int actual = testee.getCalibrationValuesFromFromFile(input);
+
+        assertEquals(expected, actual);
+    }
 
 }
