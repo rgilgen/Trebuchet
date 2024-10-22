@@ -9,6 +9,10 @@ public class Trebuchet {
 
     public int getCalibrationValuesFromFromFile(String input) throws IOException {
         List<String> listOfStrings = Files.readAllLines(Path.of(input));
+        return sumCalibrationValues(listOfStrings);
+    }
+
+    private Integer sumCalibrationValues(List<String> listOfStrings) {
         return listOfStrings
                 .stream()
                 .map(this::getCalibrationValue)
