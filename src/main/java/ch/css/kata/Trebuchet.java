@@ -19,10 +19,7 @@ public class Trebuchet {
         if (numbers.isBlank()) {
             throw new IllegalArgumentException("No numbers found");
         }
-        String firstNumber = String.valueOf(Character.getNumericValue(numbers.charAt(0)));
 
-        return Integer.parseInt(firstNumber + Character.getNumericValue(numbers.charAt(length - 1)));
-
-
+        return Integer.parseInt(String.valueOf(numbers.charAt(0)) + numbers.charAt(length - 1));
     }
 }
