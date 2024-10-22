@@ -1,21 +1,18 @@
 package ch.css.kata;
 
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
 public class Trebuchet {
 
     public int getCalibrationValue(String input) {
-        boolean isFirstFound = false;
-        int firstDigit = 0;
-        int lastDigit = 0;
+        Pattern pattern = Pattern.compile("\\d+");
 
-        for (Character c : input.toCharArray()) {
-            if (Character.isDigit(c)) {
-                if (!isFirstFound) {
-                    isFirstFound = true;
-                    firstDigit = Character.getNumericValue(c) * 10;
-                }
-                lastDigit = Character.getNumericValue(c);
-            }
-        }
-        return firstDigit + lastDigit;
+        String numbers = pattern
+                .matcher(input)
+                .results()
+                .map(match -> match.group())
+                .collect(Collectors.joining(""));
+        return Integer.valueOf(numbers);
     }
 }
