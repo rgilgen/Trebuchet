@@ -3,10 +3,10 @@ package ch.css.kata;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
-import static java.util.Collections.singletonList;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TrebuchetTest {
 
@@ -45,7 +45,7 @@ class TrebuchetTest {
     @Test
     void getStringFromFile() throws IOException {
         String input = "src/test/resources/testInput.txt";
-        List<String> expected = singletonList("6798seven");
+        List<String> expected = Arrays.asList("6798seven", "se7en");
 
         List<String> actual = testee.getStringFromFile(input);
 

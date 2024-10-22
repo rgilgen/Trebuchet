@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 public class Trebuchet {
 
     public List<String> getStringFromFile(String path) throws IOException {
-
         File file = new File(path);
         InputStream is = Files.newInputStream(file.toPath());
         Reader reader = new InputStreamReader(is);
