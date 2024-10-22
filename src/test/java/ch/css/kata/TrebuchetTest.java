@@ -27,4 +27,16 @@ class TrebuchetTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void getCalibrationValueForOneNumber() {
+        String input = "ab7c";
+        int expected = 77;
+
+        int actual = testee.getCalibrationValue(input);
+
+        assertEquals(expected, actual);
+    }
+
+
 }
